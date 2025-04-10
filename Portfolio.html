@@ -10,18 +10,19 @@
       font-family: 'Noto Sans TC', sans-serif;
       margin: 0;
       padding: 0;
-      background: #fefefe;
+      background: #f0f8ff;
       color: #333;
     }
     header {
-      background: #9ad1ff;
+      background: #007acc;
+      color: white;
       padding: 2rem;
       text-align: center;
     }
     nav a {
       margin: 0 1rem;
       text-decoration: none;
-      color: #333;
+      color: white;
       font-weight: bold;
     }
     .hero {
@@ -31,6 +32,22 @@
     .hero h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
+    }
+    .filters {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .filters button {
+      background-color: #ffcc00;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .filters button:hover {
+      background-color: #ffdd33;
     }
     .projects {
       display: grid;
@@ -44,6 +61,7 @@
       box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       overflow: hidden;
       transition: transform 0.2s;
+      cursor: pointer;
     }
     .card:hover {
       transform: translateY(-5px);
@@ -62,8 +80,31 @@
     footer {
       text-align: center;
       padding: 2rem;
-      background: #9ad1ff;
+      background: #e0e0e0;
       font-size: 0.9rem;
+    }
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 90%;
+    }
+    .close-btn {
+      float: right;
+      cursor: pointer;
+      font-size: 1.5rem;
     }
   </style>
 </head>
@@ -82,19 +123,28 @@
     <p>這裡展示了我喜歡的創作與設計</p>
   </section>
 
+  <div class="filters">
+    <button onclick="filterProjects('all')">全部</button>
+    <button onclick="filterProjects('插畫')">插畫</button>
+    <button onclick="filterProjects('廣告')">廣告</button>
+    <button onclick="filterProjects('文創')">文創商品</button>
+    <button onclick="filterProjects('網頁')">網頁</button>
+    <button onclick="filterProjects('DM')">DM</button>
+  </div>
+
   <section id="projects" class="projects">
-    <div class="card">
+    <div class="card" data-category="插畫">
       <img src="https://placehold.co/300x180" alt="作品圖1">
       <div class="card-content">
-        <h3>作品名稱</h3>
-        <p>簡短描述或設計重點介紹。</p>
+        <h3>插畫作品</h3>
+        <p>這是一件插畫風格的設計。</p>
       </div>
     </div>
-    <div class="card">
+    <div class="card" data-category="文創">
       <img src="https://placehold.co/300x180" alt="作品圖2">
       <div class="card-content">
-        <h3>作品名稱</h3>
-        <p>這裡可以寫上你的插畫或設計靈感來源。</p>
+        <h3>文創商品</h3>
+        <p>以水獺為主題的周邊商品設計。</p>
       </div>
     </div>
   </section>
@@ -106,11 +156,46 @@
 
   <section id="contact" class="hero">
     <h2>聯絡方式</h2>
-    <p>Email: hcs315@gmail.com</p>
+    <p>Email: yourmail@example.com</p>
+    <p>Instagram: @yourinsta</p>
   </section>
 
   <footer>
     &copy; 2025 黃昭雄 | 本網站由Bruce自製，用愛與設計完成 ♥
   </footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const modal = document.getElementById('modal');
+    const modalBody = document.getElementById('modal-body');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        modalBody.innerHTML = card.innerHTML;
+        modal.style.display = 'flex';
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    function filterProjects(category) {
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
