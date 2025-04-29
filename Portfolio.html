@@ -29,10 +29,6 @@
       padding: 3rem;
       text-align: center;
     }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
     .filters {
       text-align: center;
       margin-bottom: 2rem;
@@ -52,150 +48,227 @@
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      gap: 1.5rem;
       padding: 2rem;
     }
     .card {
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      background: transparent;
+      border-radius: 12px;
       overflow: hidden;
-      transition: transform 0.2s;
+      transition: transform 0.3s ease;
       cursor: pointer;
-    }
-    .card:hover {
-      transform: translateY(-5px);
     }
     .card img {
       width: 100%;
-      height: 180px;
-      object-fit: cover;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      transition: transform 0.2s ease;
     }
-    .card-content {
-      padding: 1rem;
-    }
-    .card-content h3 {
-      margin-top: 0;
+    .card:hover img {
+      transform: scale(1.03);
     }
     footer {
       text-align: center;
       padding: 2rem;
-      background: #e0e0e0;
+      background: #007acc;
       font-size: 0.9rem;
+      color: #fff;
     }
+
     .modal {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
       display: none;
       justify-content: center;
       align-items: center;
+      z-index: 1000;
     }
     .modal-content {
-      background: #fff;
-      padding: 2rem;
-      border-radius: 16px;
-      max-width: 600px;
-      width: 90%;
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      object-fit: contain;
     }
     .close-btn {
-      float: right;
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 1001;
+      font-size: 2rem;
+      color: white;
       cursor: pointer;
-      font-size: 1.5rem;
+      font-weight: bold;
+      background-color: rgba(0,0,0,0.5);
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
     }
+    .arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: white;
+      background-color: rgba(0,0,0,0.5);
+      padding: 0.5rem;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .arrow-left { left: 1rem; }
+    .arrow-right { right: 1rem; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>你好，我是黃昭雄</h1>
-    <nav>
-      <a href="#projects">作品</a>
-      <a href="#about">關於我</a>
-      <a href="#contact">聯絡</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1>歡迎來到我的作品集</h1>
-    <p>這裡展示了我喜歡的創作與設計</p>
-  </section>
+<header>
+  <h1>你好，我是黃昭雄</h1>
+  <nav>
+    <a href="#projects">作品</a>
+    <a href="#about">關於我</a>
+    <a href="#contact">聯絡</a>
+  </nav>
+</header>
 
-  <div class="filters">
-    <button onclick="filterProjects('all')">全部</button>
-    <button onclick="filterProjects('插畫')">插畫</button>
-    <button onclick="filterProjects('廣告')">廣告</button>
-    <button onclick="filterProjects('文創')">文創商品</button>
-    <button onclick="filterProjects('網頁')">網頁</button>
-    <button onclick="filterProjects('DM')">DM</button>
+<section class="hero">
+  <h1>歡迎來到我的作品集</h1>
+  <p>這裡展示了我喜歡的創作與設計</p>
+</section>
+
+<div class="filters">
+  <button onclick="filterProjects('all')">全部</button>
+  <button onclick="filterProjects('UI')">UI</button>
+  <button onclick="filterProjects('廣告')">廣告</button>
+  <button onclick="filterProjects('文創')">文創商品</button>
+  <button onclick="filterProjects('包裝')">包裝</button>
+  <button onclick="filterProjects('DM')">DM</button>
+</div>
+
+<section id="projects" class="projects">
+  <div class="card" data-category="UI"><img src="images/figma/figma-login.png" alt="UI_login"></div>
+  <div class="card" data-category="UI"><img src="images/figma/signup.png" alt="UI_signup"></div>
+  <div class="card" data-category="UI"><img src="images/figma/landing page.png" alt="UI_landing"></div>
+  <div class="card" data-category="UI"><img src="images/figma/Calculator_and_profile.png" alt="UI_calculator"></div>
+  <div class="card" data-category="UI"><img src="images/figma/settingPage.png" alt="UI_setting"></div>
+  <div class="card" data-category="UI"><img src="images/figma/404page.png" alt="UI_404"></div>
+  <div class="card" data-category="UI"><img src="images/figma/Music player.png" alt="UI_Music player"></div>
+  <div class="card" data-category="UI"><img src="images/figma/Commerce Shop - single product.png" alt="UI_Commerce Shop - single product"></div>
+  <div class="card" data-category="廣告"><img src="https://placehold.co/300x180?text=廣告Banner" alt="廣告"></div>
+  <div class="card" data-category="文創"><img src="https://placehold.co/300x180?text=文創商品" alt="文創"></div>
+  <div class="card" data-category="包裝"><img src="https://placehold.co/300x180?text=網頁設計" alt="包裝"></div>
+  <div class="card" data-category="DM"><img src="https://placehold.co/300x180?text=DM設計" alt="DM"></div>
+</section>
+
+<section id="about" class="hero">
+  <h2>關於我</h2>
+  <p>喜歡插畫、手繪。寫實更優於抽象。一直在追求新知的道路。</p>
+</section>
+
+<section id="contact" class="hero">
+  <h2>聯絡方式</h2>
+  <p>Email: hcs315@gmail.com</p>
+</section>
+
+<footer>
+  &copy; 2025 黃昭雄 | 本網站由Bruce自製，用愛與設計完成 ♥
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-content" id="modal-body">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <span class="arrow arrow-left" onclick="navigate(-1)">&#10094;</span>
+    <span class="arrow arrow-right" onclick="navigate(1)">&#10095;</span>
   </div>
+</div>
 
-  <section id="projects" class="projects">
-    <div class="card" data-category="插畫">
-      <img src="https://placehold.co/300x300" alt="作品圖1">
-      <div class="card-content">
-        <h3>插畫作品</h3>
-        <p>這是一件插畫風格的設計。</p>
-      </div>
-    </div>
-    <div class="card" data-category="文創">
-      <img src="https://placehold.co/300x300" alt="作品圖2">
-      <div class="card-content">
-        <h3>文創商品</h3>
-        <p>以水獺為主題的周邊商品設計。</p>
-      </div>
-    </div>
-  </section>
+<script>
+  const cards = document.querySelectorAll('.card');
+  const modal = document.getElementById('modal');
+  const modalBody = document.getElementById('modal-body');
+  let currentIndex = 0;
+  let touchStartX = 0;
 
-  <section id="about" class="hero">
-    <h2>關於我</h2>
-    <p>這裡可以介紹你是誰、喜歡什麼風格、擅長哪些設計工具等。</p>
-  </section>
+  const images = Array.from(cards).map(card => {
+    const img = card.querySelector('img');
+    return { src: img.src, alt: img.alt };
+  });
 
-  <section id="contact" class="hero">
-    <h2>聯絡方式</h2>
-    <p>Email: yourmail@example.com</p>
-    <p>Instagram: @yourinsta</p>
-  </section>
-
-  <footer>
-    &copy; 2025 黃昭雄 | 本網站由Bruce自製，用愛與設計完成 ♥
-  </footer>
-
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close-btn" onclick="closeModal()">&times;</span>
-      <div id="modal-body"></div>
-    </div>
-  </div>
-
-  <script>
-    const cards = document.querySelectorAll('.card');
-    const modal = document.getElementById('modal');
-    const modalBody = document.getElementById('modal-body');
-
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        modalBody.innerHTML = card.innerHTML;
-        modal.style.display = 'flex';
-      });
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      currentIndex = index;
+      showModal(currentIndex);
     });
+  });
 
-    function closeModal() {
-      modal.style.display = 'none';
-    }
+  function showModal(index) {
+    const { src, alt } = images[index];
+    modalBody.innerHTML = `
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <span class="arrow arrow-left" onclick="navigate(-1)">&#10094;</span>
+      <img src="${src}" alt="${alt}" id="modal-image" />
+      <span class="arrow arrow-right" onclick="navigate(1)">&#10095;</span>
+    `;
+    modal.style.display = 'flex';
 
-    function filterProjects(category) {
-      cards.forEach(card => {
-        if (category === 'all' || card.dataset.category === category) {
-          card.style.display = 'block';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+    // 加入觸控事件
+    const modalImg = document.getElementById('modal-image');
+    modalImg.addEventListener('touchstart', handleTouchStart, { passive: true });
+    modalImg.addEventListener('touchend', handleTouchEnd, { passive: true });
+  }
+
+  function navigate(direction) {
+    currentIndex = (currentIndex + direction + images.length) % images.length;
+    showModal(currentIndex);
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  function filterProjects(category) {
+    cards.forEach(card => {
+      card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+    });
+  }
+
+  // 鍵盤左右鍵切換圖片
+  document.addEventListener('keydown', (e) => {
+    if (modal.style.display === 'flex') {
+      if (e.key === 'ArrowRight') {
+        navigate(1);
+      } else if (e.key === 'ArrowLeft') {
+        navigate(-1);
+      } else if (e.key === 'Escape') {
+        closeModal();
+      }
     }
-  </script>
+  });
+
+  // 手機觸控滑動
+  function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+  }
+
+  function handleTouchEnd(e) {
+    const touchEndX = e.changedTouches[0].screenX;
+    const deltaX = touchEndX - touchStartX;
+    if (Math.abs(deltaX) > 50) {
+      navigate(deltaX > 0 ? -1 : 1); // 向右滑=上一張，向左滑=下一張
+    }
+  }
+</script>
+
+
 </body>
 </html>
